@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+    <head>
+        <meta name="viewport" content="width=device-width", initial scale="1.0">
+         <title> Login</title>
+        <!--# Link to external CSS file for styling-->
+        <link rel="stylesheet" href="style.css">
+        <!--# Link to JavaScript file -->
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+        <h2>Sign Up</h2>
+        <!--# Registration form for user inputs-->
+        <form id="registrationForm">
+
+            <!--# User's full name-->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <hr>
+
+            <!--# Valid email address-->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <hr>
+           
+            <!--# Date Of Birth-->
+            <label for="dob">Date Of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+            <hr>
+
+            <!--# Input Password-->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <!--# Ensures that criteria is met: at least 8 letters long can contains both letters and numbers-->
+            <hr>
+
+            <!--# Submit button triggers validation-->
+            <button type="submit">Register</button>
+        </form>
+
+        <!--# Show error messages using paragraph-->
+        <p id="errorMessage" class="error"></p>
+        </div>
+    </head>
+</html>

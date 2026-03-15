@@ -1,0 +1,20 @@
+body {
+  background-image: url('images/main_display.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Ensures it covers the full height */
+}
+
+.img-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer; /* Shows the "hand" icon on hover */
+  outline: none;
+}
+
+.img-btn img {
+  display: block; /* Removes weird bottom spacing */
+  width: 150px;   /* Adjust to your design size */
+}
