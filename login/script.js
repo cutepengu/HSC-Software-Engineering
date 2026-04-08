@@ -1,38 +1,87 @@
-document.getElementById("registrationForm")?.addEventListener("submit", function(event) {
+// Check if user already exists
+window.addEventListener("DOMContentLoaded", () => {
 
-    event.preventDefault(); // Stop page refresh
+const savedUser = localStorage.getItem("name");
 
-    // Get form values
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const dob = document.getElementById("dob").value;
-    const password = document.getElementById("password").value;
+if(savedUser){
+window.location.href = "../game.html";
+}
 
-    // Password validation where password is at least 8 letters and contains both letters and numbers
-    const passwordRule = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+});
+class User {
 
-    if (!passwordRule.test(password)) {
-        alert("Password must be at least 8 characters long and contain both letters and numbers.");
-        return; // Stop form submission
-    }
+constructor(name, email, dob) {
 
-    // Save values to sessionStorage
-    sessionStorage.setItem("name", name);
-    sessionStorage.setItem("email", email);
-    sessionStorage.setItem("dob", dob);
+this.name = name;
+this.email = email;
+this.dob = dob;
 
-    // Redirect to success page
-    window.location.href = "registration.html";
+}
+
+saveUser() {
+
+sessionStorage.setItem("name", this.name);
+sessionStorage.setItem("email", this.email);
+sessionStorage.setItem("dob", this.dob);
+
+}
+
+}
+
+
+document.getElementById("registrationForm")?.addEventListener("submit", function(event){
+
+event.preventDefault();
+
+const name=document.getElementById("name").value;
+const email=document.getElementById("email").value;
+const dob=document.getElementById("dob").value;
+const password=document.getElementById("password").value;
+
+const error=document.getElementById("errorMessage");
+
+error.textContent="";
+
+
+if(!email.includes("@")){
+
+error.textContent="Emails require an @ symbol. Please try again.";
+return;
+
+}
+
+
+const passwordRule=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+if(!passwordRule.test(password)){
+
+error.textContent="Password must be at least 8 characters long and contain both letters and numbers.";
+return;
+
+}
+
+const newUser=new User(name,email,dob);
+
+newUser.saveUser();
+
+window.location.href="../game.html";
+
 });
 
-// Display saved data on registration success page
-window.addEventListener("DOMContentLoaded", function () {
 
-    const name = sessionStorage.getItem("name");
-    const email = sessionStorage.getItem("email");
-    const dob = sessionStorage.getItem("dob");
+window.addEventListener("DOMContentLoaded",function(){
 
-    if (name) document.getElementById("displayName").textContent = name;
-    if (email) document.getElementById("displayEmail").textContent = email;
-    if (dob) document.getElementById("displayDob").textContent = dob;
+const name=sessionStorage.getItem("name");
+const email=sessionStorage.getItem("email");
+const dob=sessionStorage.getItem("dob");
+
+if(document.getElementById("displayName"))
+document.getElementById("displayName").textContent=name;
+
+if(document.getElementById("displayEmail"))
+document.getElementById("displayEmail").textContent=email;
+
+if(document.getElementById("displayDob"))
+document.getElementById("displayDob").textContent=dob;
+
 });

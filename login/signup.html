@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
+<title>Sign Up</title>
 <link rel="stylesheet" href="style.css">
 <script src="auth.js" defer></script>
 </head>
@@ -15,19 +15,27 @@
 </button>
 
 <div class="container">
-    <h2>Login</h2>
-    <form id="loginForm">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
     </form>
-    <p>Are you new? <a href="signup.html">Click here to sign up!</a></p>
     <p id="errorMessage" class="error"></p>
 </div>
 </body>

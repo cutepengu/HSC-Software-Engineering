@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Sea Explorer</title>
+<link rel="stylesheet" href="style.css">
+<script src="menu.js" defer></script>
 </head>
-</html>
+<body id="main-menu-body">
 
-<body id="main-body">
-  <!-- Main Menu Scene -->
-  <div id="main-menu" class="menu-container">
-    <button type="button" class="img-btn" onclick="goToAuth()">
-      <img src="images/play-btn.png" alt="Play">
+<div class="menu-container">
+    <!-- Play Button -->
+    <button class="img-btn" id="playBtn">
+        <img src="images/play_button.png" alt="Play">
     </button>
-    <!-- Help and Settings buttons go here -->
-  </div>
 
-  <!-- Auth Scene (Hidden by default) -->
-  <div id="auth-page" style="display: none;">
-    <div class="auth-container">
-      <h2>Login or Sign Up</h2>
-      <!-- Your login/signup form code here -->
-      <button onclick="goBack()">Back to Menu</button>
-    </div>
-  </div>
+    <!-- Login Button -->
+    <button class="img-btn" id="loginBtn">
+        <img src="images/login_button.png" alt="Login">
+    </button>
+
+    <!-- Help Button -->
+    <button class="img-btn" id="helpBtn">
+        <img src="images/help_button.png" alt="Help">
+    </button>
+</div>
+
 </body>
+</html>
