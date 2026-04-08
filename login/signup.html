@@ -3,40 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sign Up</title>
-<link rel="stylesheet" href="style.css">
+<title>Sign Up - Deep Sea Explorer</title>
+<link rel="stylesheet" href="../style.css">
 <script src="auth.js" defer></script>
 </head>
-<body style="background-image:url('../images/blue_display.png');">
-
-<!-- Back button top-left -->
 <button class="back-btn" onclick="goBack()">
     <img src="../images/back_button.png" alt="Back">
 </button>
+<body style="background-image:url('../images/blue_display.png'); background-size: cover;">
 
 <div class="container">
-    <h2>Sign Up</h2>
-    <form id="signupForm">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Register</button>
-    </form>
-    <p id="errorMessage" class="error"></p>
+<h2>Sign Up</h2>
+<form id="signupForm">
+    <div class="form-group">
+        <label>Name:</label>
+        <input type="text" id="name">
+    </div>
+    <div class="form-group">
+        <label>Email:</label>
+        <input type="text" id="email">
+    </div>
+    <div class="form-group">
+        <label>Date of Birth:</label>
+        <input type="date" id="dob">
+    </div>
+    <div class="form-group">
+        <label>Password:</label>
+        <input type="password" id="password">
+    </div>
+    <button type="submit">Register</button>
+</form>
+<p id="errorMessage" class="error"></p>
 </div>
+
 </body>
 </html>

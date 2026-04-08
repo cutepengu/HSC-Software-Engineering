@@ -1,73 +1,81 @@
-// SIGNUP FORM
-const signupForm = document.getElementById("signupForm");
-if (signupForm) {
-    const signupError = document.getElementById("errorMessage");
-    signupForm.addEventListener("submit", function(e) {
-        e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
 
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const dob = document.getElementById("dob").value;
-        const password = document.getElementById("password").value;
+    const signupForm = document.getElementById("signupForm");
+    const loginForm = document.getElementById("loginForm");
+    const error = document.getElementById("errorMessage");
 
-        const passwordRule = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    // SIGNUP
+    if(signupForm){
+        signupForm.addEventListener("submit", (e)=>{
+            e.preventDefault();
 
-        // Reset error message
-        signupError.textContent = "";
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("emailSignup").value.trim();
+            const dob = document.getElementById("dob").value;
+            const password = document.getElementById("passwordSignup").value.trim();
 
-        if (!email.includes("@")) {
-            signupError.textContent = "Email requires an @ symbol. Please try again.";
-            return;
-        }
+            error.textContent="";
 
-        if (!passwordRule.test(password)) {
-            signupError.textContent = "Password must be at least 8 letters and contain letters and numbers.";
-            return;
-        }
+            if(!name || !email || !dob || !password){
+                error.textContent="Please fill in all fields.";
+                return;
+            }
 
-        // Save to localStorage
-        localStorage.setItem("name", name);
-        localStorage.setItem("email", email);
-        localStorage.setItem("dob", dob);
+            if(!email.includes("@")){
+                error.textContent="Email requires an @ symbol. Please try again.";
+                return;
+            }
 
-        // Redirect to main menu
-        window.location.href = "../index.html";
-    });
-}
+            const passwordRule = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            if(!passwordRule.test(password)){
+                error.textContent="Password must be at least 8 characters and contain letters and numbers.";
+                return;
+            }
 
-// LOGIN FORM
-const loginForm = document.getElementById("loginForm");
-if (loginForm) {
-    const loginError = document.getElementById("errorMessage");
-    loginForm.addEventListener("submit", function(e) {
-        e.preventDefault();
+            // Save user info in sessionStorage
+            sessionStorage.setItem("name", name);
+            sessionStorage.setItem("email", email);
+            sessionStorage.setItem("dob", dob);
+            sessionStorage.setItem("password", password);
+            sessionStorage.setItem("loggedIn", "false");
 
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+            // Redirect to registration success
+            window.location.href = "registration.html";
+        });
+    }
 
-        // Reset error message
-        loginError.textContent = "";
+    // LOGIN
+    if(loginForm){
+        loginForm.addEventListener("submit", (e)=>{
+            e.preventDefault();
 
-        const savedEmail = localStorage.getItem("email");
-        const savedPassword = localStorage.getItem("password"); // optional if you want to check password
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
 
-        if (!email.includes("@")) {
-            loginError.textContent = "Email requires an @ symbol. Please try again.";
-            return;
-        }
+            const storedEmail = sessionStorage.getItem("email");
+            const storedPassword = sessionStorage.getItem("password");
 
-        if (email !== savedEmail) {
-            loginError.textContent = "Email not found. Please try again.";
-            return;
-        }
+            error.textContent="";
 
-        // Optional: check password
-        if (savedPassword && password !== savedPassword) {
-            loginError.textContent = "Incorrect password. Please try again.";
-            return;
-        }
+            if(!email.includes("@")){
+                error.textContent="Email requires an @ symbol. Please try again.";
+                return;
+            }
 
-        // Redirect to main menu
-        window.location.href = "../index.html";
-    });
-}
+            if(email !== storedEmail){
+                error.textContent="Account does not exist.";
+                return;
+            }
+
+            if(password !== storedPassword){
+                error.textContent="Incorrect password.";
+                return;
+            }
+
+            // Successful login
+            sessionStorage.setItem("loggedIn","true");
+            window.location.href="../game.html";
+        });
+    }
+
+});

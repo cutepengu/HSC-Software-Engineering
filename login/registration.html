@@ -1,29 +1,75 @@
 <!DOCTYPE html>
 <html lang="en-AU">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Registration Successful</title>
-
 <link rel="stylesheet" href="../style.css">
-<script src="script.js" defer></script>
+<style>
+body {
+    margin: 0;
+    background-image: url('../images/blue_display.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 60px;
+}
 
+.container {
+    background-color: rgba(255,255,255,0.95);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.back-btn img {
+    width: 40px;
+    height: 40px;
+}
+</style>
 </head>
-
-<body id="login-body">
+<body>
+<button class="back-btn" onclick="window.history.back()">
+    <img src="../images/back_button.png" alt="Back">
+</button>
 
 <div class="container">
-
-<h2>Registration Successful!</h2>
-
-<p><strong>Name:</strong> <span id="displayName"></span></p>
-<p><strong>Email:</strong> <span id="displayEmail"></span></p>
-<p><strong>Date of Birth:</strong> <span id="displayDob"></span></p>
-
+    <h2>Registration Successful!</h2>
+    <p><strong>Name:</strong> <span id="displayName"></span></p>
+    <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="displayDob"></span></p>
+    <button onclick="window.location.href='login.html'">Go to Login</button>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", ()=>{
+    document.getElementById("displayName").textContent = sessionStorage.getItem("name");
+    document.getElementById("displayEmail").textContent = sessionStorage.getItem("email");
+    document.getElementById("displayDob").textContent = sessionStorage.getItem("dob");
+});
+</script>
 </body>
 </html>
