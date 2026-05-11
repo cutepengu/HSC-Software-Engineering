@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start; /* top alignment */
-    padding-top: 150px; /* shift buttons down */
+    padding-top: 250px; /* shift buttons down */
 }
 
 /* Menu buttons stacked vertically */
