@@ -2,26 +2,38 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Sea Explorer</title>
 
-<title>Deep Sea Explorer</title>
-
-<link rel="stylesheet" href="style.css">
-<script src="game.js" defer></script>
-
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js" defer></script>
 </head>
 
-<body id="main-menu-body">
+<body id="game-body">
 
-<div class="container">
+    <!-- Top bar -->
+    <div id="top-bar">
+        <h2 id="welcomeText">Welcome, Explorer</h2>
 
-<h2 id="welcomeText"></h2>
+        <div id="top-buttons">
+            <button onclick="openMiniGames()">Mini Games</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
 
-<button onclick="logout()">Logout</button>
+    <!-- Mini‑game menu (hidden until clicked) -->
+    <div id="mini-menu" style="display:none;">
+        <button onclick="playMiniGame1()">Mini Game 1</button>
+        <button onclick="playMiniGame2()">Mini Game 2</button>
+    </div>
 
-</div>
+    <!-- Ocean game area -->
+    <div id="ocean">
+        <div id="depth-label">Depth: 0m</div>
+        <canvas id="fish-canvas"></canvas>
+    </div>
 
 </body>
 </html>
