@@ -1,6 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Catch the Fish</title>
+    <style>
+        body {
+            margin: 0;
+            background: #003366;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        #game-area {
+            position: relative;
+            width: 100vw;
+            height: 80vh;
+            overflow: hidden;
+        }
+        .fish {
+            position: absolute;
+            width: 80px;
+            cursor: pointer;
+        }
+        #score {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
 <h1>Catch the Fish!</h1>
 <div id="game-area"></div>
 <div id="score">Score: 0</div>
 <button onclick="endGame()">Finish</button>
 
 <script src="minigame_catch.js"></script>
+</body>
+</html>

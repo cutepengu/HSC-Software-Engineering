@@ -1,58 +1,53 @@
 class Menu {
 
-constructor(){
+    constructor() {
+        this.playBtn = document.getElementById("playBtn");
+        this.loginBtn = document.getElementById("loginBtn");
+        this.helpBtn = document.getElementById("helpBtn");
+        this.helpBox = document.getElementById("help-box");
+        this.closeHelpBtn = document.getElementById("closeHelpBtn");
 
-this.playBtn=document.getElementById("playBtn");
-this.loginBtn=document.getElementById("loginBtn");
-this.helpBtn=document.getElementById("helpBtn");
+        this.initialiseButtons();
+    }
 
-this.initialiseButtons();
+    initialiseButtons() {
+        if (this.playBtn) this.playBtn.addEventListener("click", () => this.startGame());
+        if (this.loginBtn) this.loginBtn.addEventListener("click", () => this.goToLogin());
+        if (this.helpBtn) this.helpBtn.addEventListener("click", () => this.openHelp());
+        if (this.closeHelpBtn) this.closeHelpBtn.addEventListener("click", () => this.closeHelp());
+    }
 
+    startGame() {
+        document.body.style.backgroundImage = "url('images/blue_display.png')";
+        const loggedIn = sessionStorage.getItem("loggedIn");
+
+        setTimeout(() => {
+            if (loggedIn === "true") {
+                window.location.href = "game/game.html";  // FIXED
+            } else {
+                window.location.href = "login/login.html";
+            }
+        }, 200);
+    }
+
+    goToLogin() {
+        document.body.style.backgroundImage = "url('images/blue_display.png')";
+        setTimeout(() => {
+            window.location.href = "login/login.html";
+        }, 200);
+    }
+
+    openHelp() {
+        document.body.style.backgroundImage = "url('images/blue_display.png')";
+        this.helpBox.classList.remove("hidden");
+    }
+
+    closeHelp() {
+        this.helpBox.classList.add("hidden");
+        document.body.style.backgroundImage = "url('images/main_display.png')";
+    }
 }
 
-initialiseButtons(){
-
-if(this.playBtn){
-this.playBtn.addEventListener("click",()=>this.startGame());
-}
-
-if(this.loginBtn){
-this.loginBtn.addEventListener("click",()=>this.goToLogin());
-}
-
-if(this.helpBtn){
-this.helpBtn.addEventListener("click",()=>this.goToHelp());
-}
-
-}
-
-startGame(){
-
-const loggedIn=sessionStorage.getItem("loggedIn");
-
-if(loggedIn==="true"){
-window.location.href="game.html";
-}
-else{
-window.location.href="login/login.html";
-}
-
-}
-
-goToLogin(){
-window.location.href="login/login.html";
-}
-
-goToHelp(){
-window.location.href="help.html";
-}
-
-}
-
-window.addEventListener("DOMContentLoaded",()=>{
-new Menu();
+window.addEventListener("DOMContentLoaded", () => {
+    new Menu();
 });
-
-function goBack(){
-window.history.back();
-}

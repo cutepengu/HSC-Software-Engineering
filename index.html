@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deep Sea Explorer</title>
-<link rel="stylesheet" href="style.css">
-<script src="menu.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Deep Sea Explorer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body id="main-menu">
 
-<body id="main-menu-body">
+    <div id="menu-box">
+        <button id="playBtn">Play</button>
+        <button id="loginBtn">Login</button>
+        <button id="helpBtn">Help</button>
+    </div>
 
-<div class="menu-container">
-    <button class="img-btn" id="playBtn">
-        <img src="images/play_button.png" alt="Play">
-    </button>
-    <button class="img-btn" id="loginBtn">
-        <img src="images/login_button.png" alt="Login">
-    </button>
-    <button class="img-btn" id="helpBtn">
-        <img src="images/help_button.png" alt="Help">
-    </button>
-</div>
+    <div id="help-box" class="hidden">
+        <h2>Help</h2>
+        <p>Welcome to Deep Sea Explorer! Click Play to begin exploring the ocean...</p>
+        <button id="closeHelpBtn">Close</button>
+    </div>
 
+    <script src="menu.js"></script>
 </body>
 </html>

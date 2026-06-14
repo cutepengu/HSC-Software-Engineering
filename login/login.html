@@ -1,114 +1,33 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deep Sea Explorer Login</title>
-<link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../auth.js" defer></script>
 </head>
-<body id="login-body">
-<!-- Back Button -->
+<body>
+
 <button class="back-btn" onclick="window.history.back()">
     <img src="../images/back_button.png" alt="Back">
 </button>
 
-<div class="container">
-    <h2>Deep Sea Explorer</h2>
-    <p id="errorMessage"></p>
+<div class="center-box">
+    <h2>Login</h2>
 
-    <!-- LOGIN FORM -->
-    <form id="loginForm">
-        <input type="email" id="loginEmail" placeholder="Email" required><br>
-        <input type="password" id="loginPassword" placeholder="Password" required><br>
-        <button type="submit">Login</button>
+    <form id="loginForm" autocomplete="off" onsubmit="return false;">
+        <label>Email:</label><br>
+        <input type="email" id="email" autocomplete="off">
+
+        <label>Password:</label><br>
+        <input type="password" id="password" autocomplete="new-password">
+
+        <button type="button" onclick="login()">Login</button>
     </form>
 
-    <hr>
-
-    <p>Are you new? <button id="showSignup" type="button">Sign Up</button></p>
-
-    <!-- SIGNUP FORM -->
-    <form id="signupForm" style="display:none;">
-        <input type="text" id="signupName" placeholder="Name" required><br>
-        <input type="email" id="signupEmail" placeholder="Email" required><br>
-        <input type="date" id="signupDob" required><br>
-        <input type="password" id="signupPassword" placeholder="Password" required><br>
-        <button type="submit">Sign Up</button>
-    </form>
+    <p style="margin-top:10px;">No account? <a href="signup.html">Sign up</a></p>
+    <p id="errorMessage" class="error" style="color:red;"></p>
 </div>
-
-<script>
-// Switch to signup
-document.getElementById("showSignup").addEventListener("click", ()=>{
-    document.getElementById("loginForm").style.display="none";
-    document.getElementById("signupForm").style.display="block";
-    document.getElementById("errorMessage").textContent="";
-});
-
-// Signup logic
-document.getElementById("signupForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    const name = document.getElementById("signupName").value.trim();
-    const email = document.getElementById("signupEmail").value.trim();
-    const dob = document.getElementById("signupDob").value;
-    const password = document.getElementById("signupPassword").value.trim();
-    const error = document.getElementById("errorMessage");
-
-    error.textContent="";
-
-    if(!email.includes("@")){
-        error.textContent="Email requires an @ symbol. Please try again.";
-        return;
-    }
-
-    const passwordRule = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    if(!passwordRule.test(password)){
-        error.textContent="Password must be at least 8 characters and contain letters and numbers.";
-        return;
-    }
-
-    // Save to sessionStorage
-    sessionStorage.setItem("name", name);
-    sessionStorage.setItem("email", email);
-    sessionStorage.setItem("dob", dob);
-    sessionStorage.setItem("password", password);
-
-    // Redirect to registration success page
-    window.location.href = "registration.html";
-});
-
-// Login logic
-document.getElementById("loginForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value.trim();
-    const storedEmail = sessionStorage.getItem("email");
-    const storedPassword = sessionStorage.getItem("password");
-    const error = document.getElementById("errorMessage");
-
-    error.textContent="";
-
-    if(!email.includes("@")){
-        error.textContent="Email requires an @ symbol. Please try again.";
-        return;
-    }
-
-    if(email !== storedEmail){
-        error.textContent="Account does not exist.";
-        return;
-    }
-
-    if(password !== storedPassword){
-        error.textContent="Incorrect password.";
-        return;
-    }
-
-    // Successful login
-    window.location.href="../game.html";
-});
-</script>
 
 </body>
 </html>

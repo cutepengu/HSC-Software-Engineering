@@ -1,38 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Deep Sea Explorer</title>
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game.css">
     <script src="game.js" defer></script>
 </head>
+<body>
 
-<body id="game-body">
-
-    <!-- Top bar -->
     <div id="top-bar">
-        <h2 id="welcomeText">Welcome, Explorer</h2>
-
+        <h2>Deep Sea Explorer</h2>
         <div id="top-buttons">
-            <button onclick="openMiniGames()">Mini Games</button>
-            <button onclick="logout()">Logout</button>
+            <button id="btn-quiz">Mini Games</button>
         </div>
     </div>
 
-    <!-- Mini‑game menu (hidden until clicked) -->
-    <div id="mini-menu" style="display:none;">
-        <button onclick="playMiniGame1()">Mini Game 1</button>
-        <button onclick="playMiniGame2()">Mini Game 2</button>
+    <div id="ocean"></div>
+
+    <!-- Info panel -->
+    <div id="info-panel" class="hidden">
+        <h3 id="info-name"></h3>
+        <p id="info-depth"></p>
+        <p id="info-size"></p>
+        <p id="info-weight"></p>
+        <p id="info-lifespan"></p>
+        <p id="info-diet"></p>
+        <p id="info-fact"></p>
+        <button id="info-close">Close</button>
     </div>
 
-    <!-- Ocean game area -->
-    <div id="ocean">
-        <div id="depth-label">Depth: 0m</div>
-        <canvas id="fish-canvas"></canvas>
+    <!-- Mini‑game menu -->
+    <div id="menu-overlay" class="hidden">
+        <div id="menu-box">
+            <h3>Choose a Mini Game</h3>
+            <button id="btn-guess">Guess!</button>
+            <button id="btn-catch">Catch!</button>
+            <button id="menu-close">Back to Ocean</button>
+        </div>
+    </div>
+
+    <!-- Guess! quiz overlay -->
+    <div id="quiz-overlay" class="hidden">
+        <div id="quiz-box">
+            <h3>Guess! – Fish Facts Quiz</h3>
+            <p id="quiz-question"></p>
+            <div id="quiz-options"></div>
+            <p id="quiz-feedback"></p>
+            <button id="quiz-next">Next Question</button>
+            <button id="quiz-exit">Exit</button>
+        </div>
+    </div>
+
+    <!-- Catch! overlay -->
+    <div id="catch-overlay" class="hidden">
+        <div id="catch-box">
+            <h3>Catch!</h3>
+            <p>Click as many fish as you can in 15 seconds!</p>
+            <p>Score: <span id="catch-score">0</span></p>
+            <button id="catch-start">Start</button>
+            <button id="catch-exit">Exit</button>
+        </div>
     </div>
 
 </body>

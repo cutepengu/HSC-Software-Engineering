@@ -2,7 +2,7 @@ let score = 0;
 
 function spawnCatchFish() {
     const fish = document.createElement("img");
-    fish.src = "assets/fish/clownfish.png";
+    fish.src = "../images/clownfish.png";
     fish.classList.add("fish");
 
     fish.style.left = Math.random() * 80 + "vw";
@@ -24,5 +24,5 @@ setInterval(spawnCatchFish, 1000);
 function endGame() {
     const coins = score * 10;
     alert(`You earned ${coins} coins!`);
-    window.location.href = "game.html";
+    window.location.href = "../games/game.html";
 }
