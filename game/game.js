@@ -4,6 +4,36 @@
 
 const fishData = [
     {
+        id: "giant-moray-eel",
+        name: "Giant Moray Eel",
+        sprite: "giant_moray_eel.png",
+        spriteWidth: 128,
+        spriteHeight: 32,
+        depthZone: "shallow",
+        size: "Up to 3m",
+        weight: "Exceeds 30kg",
+        lifespan: "10–30 years",
+        diet: "Smaller reef fish, octopus, crustaceans",
+        funFact: "Has a second set of jaws.",
+        speedFactor: 0.6,
+        scale: 0.55
+    },
+    {
+        id: "blue-tang",
+        name: "Blue Tang",
+        sprite: "blue_tang.png",
+        spriteWidth: 96,
+        spriteHeight: 64,
+        depthZone: "shallow",
+        size: "25–31cm",
+        weight: "600g",
+        lifespan: "30 years",
+        diet: "Planktons, zooplanktons, marine algae",
+        funFact: "Has hidden venomous tail spines.",
+        speedFactor: 0.9,
+        scale: 0.55
+    },
+    {
         id: "yellow-tang",
         name: "Yellow Tang",
         sprite: "yellow_tang.png",
@@ -19,34 +49,79 @@ const fishData = [
         scale: 0.5
     },
     {
-        id: "blue-tang",
-        name: "Blue Tang",
-        sprite: "blue_tang.png",
-        spriteWidth: 96,
-        spriteHeight: 64,
+        id: "bluespine-unicornfish",
+        name: "Bluespine Unicornfish",
+        sprite: "bluespine_unicornfish.png",
+        spriteWidth: 1061,
+        spriteHeight: 609,
         depthZone: "shallow",
-        size: "25–31cm",
-        weight: "600g",
-        lifespan: "30 years",
-        diet: "Plankton",
-        funFact: "Has venomous tail spines.",
+        size: "Up to 70cm",
+        weight: "5.8kg",
+        lifespan: "15 to 50+ years",
+        diet: "Benthic macroalgae, leafy brown algae",
+        funFact: "Their skin is covered in tiny, rough scales that feel like sandpaper.",
         speedFactor: 0.8,
-        scale: 0.55
+        scale: 0.05
     },
     {
-        id: "clownfish",
-        name: "Clownfish",
-        sprite: "clownfish.png",
-        spriteWidth: 64,
+        id: "porcupine-fish",
+        name: "Porcupine Fish",
+        sprite: "porcupine_fish.png",
+        spriteWidth: 32,
         spriteHeight: 32,
         depthZone: "shallow",
-        size: "11cm",
-        weight: "Small",
-        lifespan: "6–10 years",
-        diet: "Algae",
-        funFact: "Lives in anemones.",
-        speedFactor: 0.9,
-        scale: 0.45
+        size: "Up to 30cm",
+        weight: "1.8kg",
+        lifespan: "10–15 years",
+        diet: "Crabs, clams, snails, sea urchins",
+        funFact: "Their spines lay flat against the body when feeling relaxed.",
+        speedFactor: 0.8,
+        scale: 1.5
+    },
+    {
+        id: "mackerel",
+        name: "Mackerel",
+        sprite: "mackerel.png",
+        spriteWidth: 96,
+        spriteHeight: 32,
+        depthZone: "shallow",
+        size: "Up to 35cm",
+        weight: "700g",
+        lifespan: "7 to 20 years",
+        diet: "Zooplanktons, shrimps",
+        funFact: "They are predatory fish that gather in massive schools.",
+        speedFactor: 0.8,
+        scale: 1.8
+    },
+    {
+        id: "anglerfish",
+        name: "Anglerfish",
+        sprite: "anglerfish.png",
+        spriteWidth: 64,
+        spriteHeight: 64,
+        depthZone: "deep",
+        size: "Females: Up to 1.2m \n Males: Up to 5cm",
+        weight: "Females: 50kg \n Males: 1g",
+        lifespan: "20–25 years",
+        diet: "Small fish, crustaceans, squid, smaller anglerfish",
+        funFact: "Male anglerfish lack the ability to feed so they survive by attaching themselves to a female anglerfish like parasites.",
+        speedFactor: 0.8,
+        scale: 0.6
+    },
+    {
+        id: "great-white-shark",
+        name: "Great White Shark",
+        sprite: "great_white_shark.png",
+        spriteWidth: 64,
+        spriteHeight: 64,
+        depthZone: "deep",
+        size: "Up to 5.9m",
+        weight: "680-1800kg",
+        lifespan: "Around 70 years",
+        diet: "Fish, smaller sharks, seals, sea lions, whale blubber",
+        funFact: "They are the world's largest predatory fish.",
+        speedFactor: 1.2,
+        scale: 15
     }
 ];
 
@@ -103,7 +178,7 @@ function startDepthFade() {
     setInterval(() => {
         if (depth < 100) depth += 1;
         updateOceanColour();
-    }, 15000);
+    }, 5000);
 }
 
 // ----------------------
@@ -225,27 +300,52 @@ menuClose.addEventListener("click", () => {
 const quizQuestions = [
     {
         question: "Which fish is bright yellow?",
-        options: ["Yellow Tang", "Blue Tang", "Clownfish", "Shark"],
+        options: ["Great White Shark", "Mackerel", "Porcupine Fish", "Yellow Tang"],
         correct: "Yellow Tang"
     },
     {
         question: "Which fish has venomous tail spines?",
-        options: ["Blue Tang", "Clownfish", "Yellow Tang", "Lanternfish"],
+        options: ["Blue Tang", "Bluespine Unicornfish", "Yellow Tang", "Anglerfish"],
         correct: "Blue Tang"
     },
     {
-        question: "Which fish lives in sea anemones?",
-        options: ["Clownfish", "Yellow Tang", "Blue Tang", "Gulper Eel"],
-        correct: "Clownfish"
-    },
-    {
         question: "Which fish mainly eats algae?",
-        options: ["Yellow Tang", "Clownfish", "Blue Tang", "Shark"],
+        options: ["Blue Tang", "Great White Shark", "Yellow Tang", "Giant Moray Eel"],
         correct: "Yellow Tang"
     },
     {
         question: "Which fish mainly eats plankton?",
-        options: ["Blue Tang", "Clownfish", "Yellow Tang", "Anglerfish"],
+        options: ["Blue Tang", "Porcupine Fish", "Yellow Tang", "Anglerfish"],
+        correct: "Blue Tang"
+    },
+    {
+        question: "Which fish is the largest predatory fish in the world?",
+        options: ["Bluespine Unicornfish", "Giant Moray Eel", "Great White Shark", "Anglerfish"],
+        correct: "Great White Shark"
+    }, 
+    {
+        question: "Which fish live in schools?",
+        options: ["Blue Tang", "Mackerel", "Giant Moray Eel", "Anglerfish"],
+        correct: "Mackerel"
+    },
+    {
+        question: "Which fish has a second set of jaws?",
+        options: ["Anglerfish", "Porcupine Fish", "Yellow Tang", "Giant Moray Eel"],
+        correct: "Giant Moray Eel"
+    },
+    {
+        question: "Which fish has a horn on its forehead?",
+        options: ["Giant Morray Eel", "Great White Shark", "Bluespine Unicornfish", "Anglerfish"],
+        correct: "Anglerfish"
+    },
+    {
+        question: "Which fish has the ability to inflate?",
+        options: ["Blue Tang", "Bluespine Unicornfish", "Anglerfish", "Porcupine Fish"],
+        correct: "Porcupine Fish"
+    },
+    {
+        question: "Which fish has a glowing lantern on its forehead?",
+        options: ["Porcupine Fish", "Anglerfish", "Blue Tang", "Giant Morray Eel"],
         correct: "Blue Tang"
     }
 ];
