@@ -520,7 +520,7 @@ function loadQuiz() {
             if (option === currentQuestion.correct) {
                 quizFeedback.textContent = "Correct!";
                 quizFeedback.style.color = "#2e7d32";
-                addCoins(5);
+                addCoins(1);
             } else {
                 quizFeedback.textContent = `Incorrect. The correct answer is ${currentQuestion.correct}.`;
                 quizFeedback.style.color = "#c62828";
