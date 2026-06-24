@@ -8,6 +8,7 @@
 </head>
 <body>
 
+    <!-- TOP BAR -->
     <div id="top-bar">
         <h2>Deep Sea Explorer</h2>
         <div id="top-buttons">
@@ -15,9 +16,10 @@
         </div>
     </div>
 
+    <!-- MAIN OCEAN AREA -->
     <div id="ocean"></div>
 
-    <!-- Info panel -->
+    <!-- INFO PANEL (FISH DETAILS) -->
     <div id="info-panel" class="hidden">
         <h3 id="info-name"></h3>
         <p id="info-depth"></p>
@@ -26,10 +28,14 @@
         <p id="info-lifespan"></p>
         <p id="info-diet"></p>
         <p id="info-fact"></p>
+
+        <!-- BUY BUTTON -->
+        <button id="info-buy">Buy This Fish</button>
+
         <button id="info-close">Close</button>
     </div>
 
-    <!-- Mini‑game menu -->
+    <!-- MINI‑GAME MENU -->
     <div id="menu-overlay" class="hidden">
         <div id="menu-box">
             <h3>Choose a Mini Game</h3>
@@ -39,7 +45,7 @@
         </div>
     </div>
 
-    <!-- Guess! quiz overlay -->
+    <!-- GUESS! QUIZ OVERLAY -->
     <div id="quiz-overlay" class="hidden">
         <div id="quiz-box">
             <h3>Guess! – Fish Facts Quiz</h3>
@@ -51,7 +57,7 @@
         </div>
     </div>
 
-    <!-- Catch! overlay -->
+    <!-- CATCH! OVERLAY -->
     <div id="catch-overlay" class="hidden">
         <div id="catch-box">
             <h3>Catch!</h3>
@@ -59,6 +65,36 @@
             <p>Score: <span id="catch-score">0</span></p>
             <button id="catch-start">Start</button>
             <button id="catch-exit">Exit</button>
+        </div>
+    </div>
+
+    <!-- BOTTOM‑LEFT HUD: COINS + INVENTORY -->
+    <div id="hud-bottom-left">
+        <span id="coin-icon">🪙</span>
+        <span id="coin-count">0</span>
+        <button id="btn-inventory" class="hud-button">🎒</button>
+    </div>
+
+    <!-- BOTTOM‑RIGHT HUD: LOGOUT BUTTON -->
+    <div id="hud-bottom-right">
+        <button id="btn-logout" class="hud-button">Logout</button>
+    </div>
+
+    <!-- INVENTORY OVERLAY -->
+    <div id="inventory-overlay" class="overlay hidden">
+        <div class="overlay-content">
+            <h2>Your Fish Inventory</h2>
+            <ul id="inventory-list"></ul>
+            <button id="inventory-close">Close</button>
+        </div>
+    </div>
+
+    <!-- LOGOUT CONFIRMATION OVERLAY -->
+    <div id="logout-overlay" class="overlay hidden">
+        <div class="overlay-content">
+            <p>Do you want to log out?</p>
+            <button id="logout-yes">Yes</button>
+            <button id="logout-no">No</button>
         </div>
     </div>
 
