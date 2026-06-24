@@ -644,7 +644,7 @@ logoutYes.addEventListener("click", () => {
     logoutOverlay.classList.add("hidden");
 
     // redirect to login page
-    window.location.href = "login.html";
+    window.location.href = "../login/login.html";
 });
 
 // NO → cancel logout
