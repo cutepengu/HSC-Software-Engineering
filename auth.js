@@ -26,45 +26,57 @@ function signup() {
         return;
     }
 
-    sessionStorage.setItem("name", name);
-    sessionStorage.setItem("email", email);
-    sessionStorage.setItem("dob", dob);
-    sessionStorage.setItem("password", password);
-    sessionStorage.setItem("loggedIn", "false");
+    // load existing users or create empty object
+    const users = JSON.parse(localStorage.getItem("users")) || {};
+
+    // Check if email already exists
+    if (users[email]) {
+        error.textContent = "An account with this email already exists.";
+        return;
+    }
+
+    // save new user
+    users[email] = {
+        name: name,
+        email: email,
+        dob: dob,
+        password: password
+    };
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    // store info temporarily for registration page
+    sessionStorage.setItem("currentUser", email);
 
     window.location.href = "registration.html";
 }
 
-
-
 // ----------------------
 // LOGIN
 // ----------------------
-function login() {
+function loginUser() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
     const error = document.getElementById("errorMessage");
 
-    const storedEmail = sessionStorage.getItem("email");
-    const storedPassword = sessionStorage.getItem("password");
-
     error.textContent = "";
 
-    if (email !== storedEmail) {
+    // load all users from localStorage
+    const users = JSON.parse(localStorage.getItem("users")) || {};
+
+    if (!users[email]) {
         error.textContent = "Account does not exist.";
         return;
     }
 
-    if (password !== storedPassword) {
+    if (users[email].password !== password) {
         error.textContent = "Incorrect password.";
         return;
     }
 
-    sessionStorage.setItem("loggedIn", "true");
-    window.location.href = "../game/game.html";  // FIXED PATH
+    sessionStorage.setItem("currentUser", email);
+    window.location.href = "../game/game.html";
 }
-
-
 
 // ----------------------
 // Disable Enter key

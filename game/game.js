@@ -176,28 +176,50 @@ const logoutYes = document.getElementById("logout-yes");
 const logoutNo = document.getElementById("logout-no");
 
 
-// ===========================================================
-// SAVE / LOAD SYSTEM
-// ===========================================================
+// =========================
+// SAVE/LOGIN SYSTEM
+// =========================
 
+// stores player's progress
 let coins = 0;
 let inventory = [];
 let selectedFish = null;
 
+// creates a unique save name for each user
 function getUserKey() {
-    const user = sessionStorage.getItem("currentUser") || "guest";
+    let user = sessionStorage.getItem("currentUser");
+
+    // if no one is logged in, treat them as a guest
+    if (!user) {
+        user = "guest";
+    }
+
     return "deepSeaProgress_" + user;
 }
 
+// loads the player's saved progress from localStorage
 function loadProgress() {
-    const saved = localStorage.getItem(getUserKey());
-    if (!saved) return;
+    const key = getUserKey();
+    const savedData = localStorage.getItem(key);
 
+    // if user is new, start fresh
+    if (!savedData) {
+        coins = 0;
+        inventory = [];
+        saveProgress(); // create a new save file for them
+        updateCoinDisplay();
+        return;
+    }
+
+    // if user has saved data, load it
     try {
-        const data = JSON.parse(saved);
-        coins = data.coins || 0;
-        inventory = data.inventory || [];
-    } catch {
+        const data = JSON.parse(savedData);
+
+        // if the data exists use, if not, set to default
+        coins = data.coins !== undefined ? data.coins : 0;
+        inventory = data.inventory !== undefined ? data.inventory : [];
+    } catch (error) {
+        // reset progress when there is an issue
         coins = 0;
         inventory = [];
     }
@@ -205,17 +227,24 @@ function loadProgress() {
     updateCoinDisplay();
 }
 
+// save player progress to localStorage
 function saveProgress() {
-    localStorage.setItem(
-        getUserKey(),
-        JSON.stringify({ coins, inventory })
-    );
+    const key = getUserKey();
+
+    const data = {
+        coins: coins,
+        inventory: inventory
+    };
+
+    localStorage.setItem(key, JSON.stringify(data));
 }
 
+// update the coin number on the screen
 function updateCoinDisplay() {
     coinCountSpan.textContent = coins;
 }
 
+// add coins and save the new amount
 function addCoins(amount) {
     coins += amount;
     updateCoinDisplay();
@@ -228,14 +257,14 @@ function addCoins(amount) {
 // ===========================================================
 
 const fishPrices = {
-    "yellow-tang": 8,
-    "blue-tang": 10,
-    "porcupine-fish": 12,
-    "mackerel": 10,
-    "bluespine-unicornfish": 15,
-    "giant-moray-eel": 20,
-    "anglerfish": 40,
-    "great-white-shark": 100
+    "yellow-tang": 20,
+    "blue-tang": 24,
+    "porcupine-fish": 40,
+    "mackerel": 30,
+    "bluespine-unicornfish": 28,
+    "giant-moray-eel": 50,
+    "anglerfish": 80,
+    "great-white-shark": 200
 };
 
 
@@ -490,6 +519,16 @@ const quizQuestions = [
         question: "Which fish has a glowing lantern on its forehead?",
         options: ["Porcupine Fish", "Anglerfish", "Blue Tang", "Giant Morray Eel"],
         correct: "Anglerfish"
+    },
+    {
+        question: "Which fish survives by attaching itself to a female of its kind?",
+        options: ["Great White Shark", "Anglerfish", "Porcupine Fish", "Giant Morray Eel"],
+        correct: "Anglerfish"
+    },
+    {
+        question: "Which fish can grow up to 5.9m?",
+        options: ["Giant Morray Eel", "Mackerel", "Great White Shark", "Bluespine Unicornfish"],
+        correct: "Great White Shark"
     }
 ];
 

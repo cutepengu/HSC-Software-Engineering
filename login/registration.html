@@ -29,13 +29,30 @@ body {
     <button onclick="window.location.href='login.html'">Go to Login</button>
 </div>
 
+
+
 <script>
-document.addEventListener("DOMContentLoaded", ()=>{
-    document.getElementById("displayName").textContent = sessionStorage.getItem("name");
-    document.getElementById("displayEmail").textContent = sessionStorage.getItem("email");
-    document.getElementById("displayDob").textContent = sessionStorage.getItem("dob");
+document.addEventListener("DOMContentLoaded", () => {
+    // Get the email of the user who just signed up
+    const currentEmail = sessionStorage.getItem("currentUser");
+
+    if (!currentEmail) return;
+
+    // Load all users from localStorage
+    const users = JSON.parse(localStorage.getItem("users")) || {};
+
+    // Get this user's data
+    const user = users[currentEmail];
+
+    if (!user) return;
+
+    // Display the user's info
+    document.getElementById("displayName").textContent = user.name;
+    document.getElementById("displayEmail").textContent = user.email;
+    document.getElementById("displayDob").textContent = user.dob;
 });
 </script>
+
 
 </body>
 </html>
