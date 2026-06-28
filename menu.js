@@ -23,7 +23,7 @@ class Menu {
 
         setTimeout(() => {
             if (loggedIn === "true") {
-                window.location.href = "game/game.html";  // FIXED
+                window.location.href = "game/game.html";  
             } else {
                 window.location.href = "login/login.html";
             }
